@@ -1,0 +1,66 @@
+function checkCashRegister(price, cash, cid) {
+  let change = cash - price;
+  let drawer = 0;
+  let changeArr =[];
+  let changeObj = {};
+  let currencyArr = [.01, .05, .10, .25, 1, 5, 10, 20, 100];
+
+  // Used to solve the float issues 
+  const subDecimals = (a, b) => {
+    let t = (a * 1000 - b * 1000);
+    return t / 1000;
+  }
+  const addDecimals = (a, b) => {
+    let t = (a * 1000 + b * 1000);
+    return t / 1000;
+  }
+
+  // Find the sum of the drawer
+  for (let i in cid){
+    drawer = addDecimals(drawer, cid[i][1]);
+  }
+
+  // Test whether the drawer has enough funds
+  let diff = drawer - change;
+  if(diff < 0) {
+    changeObj = {status: "INSUFFICIENT_FUNDS", change: []};
+  } 
+    // Test if drawer has same amount as change
+    else if (change == drawer) {
+      changeObj = {status: "CLOSED", change: cid};
+  } 
+    else {
+      for(let i = currencyArr.length - 1; i >= 0; i--){
+      if (change >= currencyArr[i]) {
+        let c = 0;
+        // Subtract currency from the drawer and change till either are 0
+        while(cid[i][1] > 0 && change > 0 && change >= currencyArr[i]){
+          cid[i][1] = subDecimals(cid[i][1], currencyArr[i]);
+          change = subDecimals(change, currencyArr[i]);
+          c = addDecimals(c, currencyArr[i]);
+        } 
+          changeArr.push([cid[i][0], c]);
+      } else if (cid[i][1] == 0){
+          // If drawer if empty add to changeArr
+          changeArr.push([cid[i][0], 0]);
+        }
+      }
+      // Test if there is leftover change
+      if (change == 0){
+        changeObj = {status: "OPEN", change: changeArr};
+      } else {
+        changeObj = {status: "INSUFFICIENT_FUNDS", change: []};
+      }
+    }
+  
+  // console.log(changeObj);
+  return changeObj;
+}
+
+// checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
+// checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]]);
+
+checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+
+// checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);

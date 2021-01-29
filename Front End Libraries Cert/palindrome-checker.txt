@@ -1,0 +1,25 @@
+function palindrome(str) {
+  let arr = str.split('');
+  let forwardArr = [];
+  let backwardArr = [];
+  let test = /[A-Za-z0-9]+/;
+  for(let i in arr){
+    if(test.test(arr[i])){
+      forwardArr.push(arr[i].toLowerCase());
+      backwardArr.unshift(arr[i].toLowerCase());
+    }
+  }
+  let forwardStr = forwardArr.join('');
+  let backwardStr = backwardArr.join('');
+  console.log(forwardStr);
+  console.log(backwardStr);
+  if (forwardStr == backwardStr) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+palindrome("A man, a plan, a canal. Panama");

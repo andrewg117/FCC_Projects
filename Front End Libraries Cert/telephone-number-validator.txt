@@ -1,0 +1,15 @@
+function telephoneCheck(str) {
+  let teleRegex1 = /^(1 |1|)((\d{10}$|(\d{3}(-| |)|\(\d{3}\)( |))\d{3}(-| |)\d{4}$))/;
+  // let teleRegex2 = /^\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/;
+  // let teleRegex3 = /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/;
+  // let teleRegex4 = /^[0-9]{3} [0-9]{3} [0-9]{4}$/;
+
+  // let teleRegex5 = /(^[0-9]{10}$)|(^[0-9]{3}-[0-9]{3}-[0-9]{4}$)/;
+  
+  // let teleRegex6 = /^[0-9]{3} [0-9]{3} [0-9]{4}$/;
+
+  console.log(teleRegex1.test(str));
+  return teleRegex1.test(str);
+}
+
+telephoneCheck("1 555 555 5555");

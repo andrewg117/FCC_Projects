@@ -1,0 +1,360 @@
+<style>
+  #main-doc {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "nav"
+      "content";
+  }
+
+  #navbar {
+    grid-area: nav;
+    background: LightGray;
+  }
+
+  #navbar header {
+    text-decoration: none;
+    color: black;
+    font-size: 20;
+  }
+
+  #navbar a {
+    text-decoration: none;
+    font-style: normal;
+  }
+
+  #nav-list {
+    text-align: center;
+  }
+
+  /* 
+    Code for buttons are adapted from:
+    https://www.w3schools.com/css/css3_buttons.asp
+  */
+  .nav-link {
+    text-decoration: none;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: gray;
+  }
+
+  #nav-list p {
+    font-size: 14px;
+    color: white;
+  }
+
+  #content {
+    margin: 1.5em;
+    grid-area: content;
+  }
+
+  .main-section {
+    border-top: 1px;
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 2em;
+    padding-top: 1em;
+  }
+
+  .main-section header {
+    font-size: 20px;
+  }
+
+
+  code {
+    background-color: lightgray;
+    font-weight: bold;
+  }
+
+  @media (max-width: 800px) {
+    #main-doc {
+      min-height: 600px;
+      width: 100%;
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "nav"
+        "content";
+    }
+
+    #content {
+      margin-top: 10em;
+    }
+
+    #navbar {
+      top: 0;
+      left: 0;
+      position: fixed;
+      width: 100%;
+      height: auto;
+    }
+
+    #nav-div {
+      display: grid;
+      justify-content: space-around;
+      padding: 1em;
+    }
+
+    #navbar header {
+      margin-bottom: 1em;
+    }
+
+    #nav-list {
+      display: flex;
+      justify-content: space-around;
+      width: auto;
+    }
+
+    .nav-link {
+      margin: 0;
+      padding: 0.5em;
+    }
+  }
+
+
+
+  @media (min-width: 800px) {
+    #main-doc {
+      grid-template-columns: auto;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "nav content";
+    }
+
+    #content {
+      margin-left: 1em;
+    }
+
+    #navbar {
+      width: 280px;
+    }
+
+    #navbar header {
+      position: fixed;
+      margin: 1em;
+    }
+
+    #nav-list {
+      position: fixed;
+      display: grid;
+      width: 250px;
+      margin-top: 3em;
+      padding: 1em;
+      text-align: left;
+    }
+
+    .nav-link {
+      padding: 10px;
+    }
+
+    #nav-list p {
+      margin: 0.5em auto;
+      font-size: 1.1em;
+    }
+  }
+</style>
+
+
+<!-- 
+  Code Project:
+  https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-survey-form
+
+  Code created using techniques from:
+  https://www.freecodecamp.org/learn/
+
+  Researched and adapted code from:
+  https://www.w3schools.com
+
+  Lorem Ipsum text was generated using the Visual Studio Code extension: 
+  Lorem ipsum 
+  by Daniel Imms
+  https://marketplace.visualstudio.com/items?itemName=Tyriar.lorem-ipsum#review-details
+ -->
+
+<main id="main-doc">
+
+  <nav id="navbar">
+    <div id="nav-div">
+      <a href="#main-doc">
+        <header><strong>Navigation</strong></header>
+      </a>
+      <div id="nav-list">
+        <a class="nav-link" href="#C#_and_SQL">
+          <p>C# and SQL</p>
+        </a>
+        <a class="nav-link" href="#Javascript_and_React">
+          <p>Javascript and React</p>
+        </a>
+        <a class="nav-link" href="#Python_and_Django">
+          <p>Python and Django</p>
+        </a>
+        <a class="nav-link" href="#NodeJS_and_MongoDB">
+          <p>NodeJS and MongoDB</p>
+        </a>
+        <a class="nav-link" href="#Git_and_Bash">
+          <p>Git and Bash</p>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+    <section id="C#_and_SQL" class="main-section">
+      <header>C# and SQL</header>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+
+      <p>
+        <code>
+        int i = 0;
+        <br>
+        SELECT * FROM table;
+      </code>
+      </p>
+
+    </section>
+
+    <section id="Javascript_and_React" class="main-section">
+      <header>Javascript and React</header>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+
+      <!-- 
+        React Code snippet from reactjs.org:
+        https://reactjs.org/docs/components-and-props.html
+       -->
+      <p>
+        <code>
+        var i = 0;
+        <br>
+        ReactDOM.render(
+          <App />,
+          document.getElementById('root')
+        );
+      </code>
+      </p>
+
+      <ul>
+        <li>Lorem ipsum dolor sit amet con</li>
+        <li>Lorem ipsum dolor sit</li>
+      </ul>
+
+
+    </section>
+    <section id="Python_and_Django" class="main-section">
+      <header>Python and Django</header>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+
+      <p>
+        <code>
+        print("Hello World!")
+        <br>
+        python manage.py runserver
+      </code>
+      </p>
+
+    </section>
+
+    <section id="NodeJS_and_MongoDB" class="main-section">
+      <header>NodeJS and MongoDB</header>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+
+      <!-- 
+        Node.js snippet from reactjs.org:
+        https://nodejs.org/docs/latest-v13.x/api/synopsis.html
+
+        MongoDB snippet from:
+        http://mongodb.github.io/node-mongodb-native/3.4/quick-start/quick-start/
+       -->
+      <p>
+        <code>
+        var http = require('http');
+        <br>
+        var mongo = require('mongodb');
+      </code>
+      </p>
+
+      <ul>
+        <li>Lorem ipsum dolor sit amet con</li>
+        <li>Lorem ipsum dolor sit</li>
+        <li>Lorem ipsum</li>
+      </ul>
+
+    </section>
+
+    <section id="Git_and_Bash" class="main-section">
+      <header>Git and Bash</header>
+
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur esse illo porro magnam ratione labore
+        consectetur, sint optio quae iure beatae maxime ea repellendus tempore corrupti asperiores commodi, placeat
+        rerum!
+      </p>
+
+      <!-- 
+        Git snippet from:
+        https://docs.github.com/en/free-pro-team@latest/github/using-git/pushing-commits-to-a-remote-repository
+
+        Bash snippet from:
+        https://www.linux.com/training-tutorials/writing-simple-bash-script/
+       -->
+
+      <p>
+        <code>
+        git push
+        <br>
+        echo "Hello $name"
+      </code>
+      </p>
+
+    </section>
+  </div>
+</main>

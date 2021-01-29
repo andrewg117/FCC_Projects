@@ -1,0 +1,196 @@
+<style>
+  section {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  #navbar {
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    background-color: gray;
+    width: 100%;
+    height: auto;
+  }
+
+  #navbar a {
+    padding: 1em;
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+
+  #navbar a:hover {
+    color: black;
+  }
+
+  #welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    background-color: darkgray;
+  }
+
+  #welcome-section h1,
+  p {
+    width: 80%;
+  }
+
+  #projects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 2em 0 2em 0;
+  }
+
+  #projects h1 {
+    font-weight: bold;
+  }
+
+  #project-div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 1rem;
+    padding-bottom: 2em;
+    width: 90%;
+    justify-content: space-evenly;
+  }
+
+  .project-tile {
+    margin: 1em;
+  }
+
+  .project-tile img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  #links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+  }
+
+  #profile-link {
+    padding: 0.5em;
+    text-decoration: none;
+    color: black;
+  }
+
+  #profile-link:hover {
+    color: gray;
+  }
+
+  @media (min-width: 800px) {
+    .project-tile img:hover {
+      -ms-transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+  }
+</style>
+
+
+
+
+<!-- 
+  Code Project:
+  https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-personal-portfolio-webpage
+
+  Code created using techniques from:
+  https://www.freecodecamp.org/learn/
+
+  Lorem Ipsum text was generated using the Visual Studio Code extension: 
+  Lorem ipsum 
+  by Daniel Imms
+  https://marketplace.visualstudio.com/items?itemName=Tyriar.lorem-ipsum#review-details
+ -->
+
+<main id="main">
+
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <nav id="navbar">
+    <a href="#welcome-section">Welcome</a>
+    <a href="#projects">Projects</a>
+    <a href="#links">Links</a>
+  </nav>
+
+  <section id="welcome-section">
+    <h1>Lorem ipsum dolor sit</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic amet neque debitis ab velit expedita possimus
+      atque
+      accusantium voluptatibus! Incidunt, totam. Unde voluptatibus totam tempora iure quam adipisci sapiente a?</p>
+  </section>
+
+  <section id="projects">
+    <h1>Projects</h1>
+    <div id="project-div">
+      <div class="project-tile">
+        <h3>Tribute Page</h3>
+        <a href="https://codepen.io/andrewj117/pen/poyOKvq" target="_blank">
+          <img src="https://codepen.io/andrewj117/pen/poyOKvq/image/small.png" alt="Tribute Page" title="Tribute Page">
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <h3>Survey Form</h3>
+        <a href="https://codepen.io/andrewj117/pen/zYqMjZR" target="_blank">
+          <img src="https://codepen.io/andrewj117/pen/zYqMjZR/image/small.png" alt="Survey Form" title="Survey Form">
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <h3>Product Landing Page</h3>
+        <a href="https://codepen.io/andrewj117/pen/LYNMRQg" target="_blank">
+          <img src="https://codepen.io/andrewj117/pen/LYNMRQg/image/small.png" alt="Product Landing Page"
+            title="Product Landing Page">
+        </a>
+      </div>
+
+      <div class="project-tile">
+        <h3>Technical Documentation</h3>
+        <a href="https://codepen.io/andrewj117/pen/YzqBXzb" target="_blank">
+          <img src="https://codepen.io/andrewj117/pen/YzqBXzb/image/small.png" alt="Technical Documentation Page"
+            title="Technical Documentation Page">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="links">
+    <h1>Links</h1>
+    <div id="links-div">
+      <a id="profile-link" href="#" target="_blank">
+        freeCodeCamp
+      </a>
+      <a id="profile-link" href="#" target="_blank">
+        GitHub
+      </a>
+      <a id="profile-link" href="#" target="_blank">
+        CodePen
+      </a>
+    </div>
+  </section>
+
+</main>
+

@@ -1,0 +1,174 @@
+<style>
+  #title-div {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  #description {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: underline;
+  }
+
+  #survey-form {
+    background-color: lightgray;
+    max-width: 800px;
+    margin: auto;
+    padding: 1.5em;
+  }
+
+  #survey-div {
+    display: grid;
+    row-gap: 2em;
+    max-width: 750px;
+    width: 80%;
+    margin: auto;
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .survey-label {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding-bottom: 0.3em;
+    width: auto;
+  }
+
+  .survey-input {
+    font-size: 1.1em;
+  }
+
+  #dropdown {
+    font-size: 1.1em;
+  }
+
+  section {
+    display: grid;
+    row-gap: 0.5em;
+  }
+
+  /* 
+    Resize code for textarea is adapted from:
+    https://www.w3schools.com/cssref/css3_pr_resize.asp
+  */
+  textarea {
+    margin-bottom: 1em;
+    font-size: 1.1em;
+    resize: vertical;
+  }
+
+  #button-div {
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    margin: auto;
+    text-align: left;
+  }
+
+  /* 
+    Code for button is adapted from:
+    https://www.w3schools.com/css/css3_buttons.asp
+  */
+  #submit {
+    background-color: rgb(44, 44, 44);
+    color: white;
+    text-align: center;
+    padding: 1em;
+    font-size: 1.2em;
+  }
+</style>
+
+
+<!-- 
+  Code Project:
+  https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-survey-form
+
+  Code created using techniques from:
+  https://www.freecodecamp.org/learn/
+
+  Lorem Ipsum text was generated using the Visual Studio Code extension: 
+  Lorem ipsum 
+  by Daniel Imms
+  https://marketplace.visualstudio.com/items?itemName=Tyriar.lorem-ipsum#review-details
+ -->
+
+<main id="main">
+  <div id="title-div">
+    <h1 id="title">Vote Technology Now!</h1>
+    <p id="description">Make sure to tell your friends!</p>
+  </div>
+
+  <form id="survey-form" action="">
+    <div id="survey-div">
+      <section>
+        <label for="name" id="name-label" class="survey-label">Name</label>
+        <input id="name" class="survey-input" type="text" name="name" placeholder="Name" required>
+      </section>
+
+      <section>
+        <label for="email" id="email-label" class="survey-label">Email</label>
+        <input id="email" class="survey-input" type="email" name="email" placeholder="ex: user@email.com" required>
+      </section>
+
+      <section>
+        <label for="number" id="number-label" class="survey-label">Age</label>
+        <input type="number" name="number" min="1" max="150" id="number" class="survey-input" placeholder="1-150">
+      </section>
+
+      <section>
+        <label for="dropdown" class="survey-label">Best PC OS</label>
+        <select name="dropdown" id="dropdown">
+          <option id="" value="mac">MacOS</option>
+          <option id="" value="windows">Windows</option>
+          <option id="" value="linux">Linux</option>
+          <option id="" value="other">Other</option>
+        </select>
+      </section>
+
+      <section id="survey-radios">
+        <label class="survey-label">Best Mobile OS</label>
+        <label>
+          <input type="radio" name="survey-radio" value="apple">
+          Apple iOS
+        </label>
+        <label>
+          <input type="radio" name="survey-radio" value="android">
+          Android
+        </label>
+        <label>
+          <input type="radio" name="survey-radio" value="other">
+          Other
+        </label>
+      </section>
+
+      <section id="survey-checks">
+        <label class="survey-label">Devices You Own</label>
+        <label>
+          <input type="checkbox" name="survey-check" value="pc">
+          PC
+        </label>
+        <label>
+          <input type="checkbox" name="survey-check" value="moble">
+          Mobile
+        </label>
+        <label>
+          <input type="checkbox" name="survey-check" value="other">
+          Other
+        </label>
+      </section>
+
+      <section>
+        <label for="survey-textarea" class="survey-label">Survey Feedback</label>
+        <textarea name="survey-textarea" id="textarea" class="survey-input" cols="30" rows="10"></textarea>
+      </section>
+
+    </div>
+    <div id="button-div">
+      <button type="submit" id="submit">Submit</button>
+    </div>
+  </form>
+</main>

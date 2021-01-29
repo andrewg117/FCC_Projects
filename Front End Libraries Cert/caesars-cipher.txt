@@ -1,0 +1,34 @@
+function rot13(str) {
+  let alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  let strArr = str.split('');
+  let indexArr = [];
+  let rotArr = [];
+  // console.log(strArr);
+  
+  //Get index in alpha
+  for (let i in strArr){
+    let alphaIndex = alpha.indexOf(strArr[i]);
+    if (alphaIndex != -1){
+      let rotInt = alphaIndex + 13;
+      if (rotInt > 25){
+        indexArr.push(rotInt - 26);
+        rotArr.push(alpha[rotInt - 26]);
+      } else {
+        indexArr.push(rotInt);
+        rotArr.push(alpha[rotInt]);
+      }
+    } else {
+      indexArr.push(strArr[i]);
+      rotArr.push(strArr[i]);
+    }
+  }
+
+  let rotStr = rotArr.join('');
+
+  console.log(indexArr);
+  console.log(rotArr);
+  console.log(rotStr);
+  return rotStr;
+}
+
+rot13("SERR YBIR?");
