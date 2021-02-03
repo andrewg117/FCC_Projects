@@ -1,0 +1,51 @@
+//Using twitter colors from:
+// https://usbrandcolors.com/twitter-colors/
+$quoteBtnColor: #657786;
+$tweetBtnColor: #1DA1F2;
+$textColor: #fff;
+$mainBgColor: #AAB8C2;
+$boxBgColor: #14171A;
+
+@mixin buttons ($butColor) {
+    background-color: $butColor;
+    color: $textColor;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    width: auto;
+    // height: 30px;
+    margin: auto;
+    padding: .8em;
+    &:hover {
+      background: white;
+      color: black;
+    }
+}
+
+body {
+  background-color: $mainBgColor;
+}
+
+#quote-box {
+  margin:  5em auto;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  text-align: center;
+  // border: 1px solid;
+  width: 60%;
+  background-color: $boxBgColor;
+  color: $textColor;
+  .btn-container{
+    display: flex;
+    margin: 1em;
+    #new-quote {
+      @include buttons($quoteBtnColor);
+    }
+    #tweet-quote {
+      @include buttons($tweetBtnColor);
+    }
+  }
+}

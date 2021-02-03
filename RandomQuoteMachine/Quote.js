@@ -44,9 +44,12 @@ class Quote extends React.Component {
   render() {
     return (
       <div id="quote-box">
-        <h1 id="text">{quoteArr[this.state.id].text}</h1>
-        <h2 id="author">{quoteArr[this.state.id].author}</h2>
-        <button id="new-quote" onClick={this.handleClick}>New Quote</button>
+        <h1 id="text">"{quoteArr[this.state.id].text}"</h1>
+        <h2 id="author">- {quoteArr[this.state.id].author}</h2>
+        <div class="btn-container">
+          <a id="tweet-quote" href="#twitter.com/intent/tweet">Tweet</a>
+          <a id="new-quote" onClick={this.handleClick}>New Quote</a>
+        </div>
       </div>
     );
   }
