@@ -6,16 +6,18 @@ $textColor: #fff;
 $mainBgColor: #AAB8C2;
 $boxBgColor: #14171A;
 
+// Button template that takes in a color variable
 @mixin buttons ($butColor) {
     background-color: $butColor;
     color: $textColor;
     text-decoration: none;
     font-weight: bold;
     border: none;
+    border-radius: 5px;
     width: auto;
-    // height: 30px;
     margin: auto;
     padding: .8em;
+    // Highlight buttons on mouse hover
     &:hover {
       background: white;
       color: black;
@@ -32,9 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: space-between;
   text-align: center;
-  // border: 1px solid;
   width: 60%;
   background-color: $boxBgColor;
   color: $textColor;

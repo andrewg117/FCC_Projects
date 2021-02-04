@@ -1,3 +1,5 @@
+// Array of quotes from:
+// https://blog.hubspot.com/sales/famous-quotes Written by Meredith Hart
 const quoteArr = [
   {
     text: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
@@ -24,7 +26,7 @@ const quoteArr = [
 class Quote extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.newQuote = this.newQuote.bind(this);
     this.state = {
       id: this.randIndex(),
     };  
@@ -35,11 +37,13 @@ class Quote extends React.Component {
     return Math.floor(Math.random()* max);
   }
   
-  handleClick() {
+  newQuote() {
     this.setState({
       id: this.randIndex()
     })
   }
+  
+  
   
   render() {
     return (
@@ -47,8 +51,13 @@ class Quote extends React.Component {
         <h1 id="text">"{quoteArr[this.state.id].text}"</h1>
         <h2 id="author">- {quoteArr[this.state.id].author}</h2>
         <div class="btn-container">
-          <a id="tweet-quote" href="#twitter.com/intent/tweet">Tweet</a>
-          <a id="new-quote" onClick={this.handleClick}>New Quote</a>
+          <a 
+            id="tweet-quote" 
+            target="_blank" 
+            href={'https://twitter.com/intent/tweet?text="' + quoteArr[this.state.id].text + '"' + '\n -' + quoteArr[this.state.id].author}>
+            Tweet
+          </a>
+          <a id="new-quote" href="#" onClick={this.newQuote}>New Quote</a>
         </div>
       </div>
     );
