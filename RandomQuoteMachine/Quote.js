@@ -1,60 +1,82 @@
-// Array of quotes from:
-// https://blog.hubspot.com/sales/famous-quotes Written by Meredith Hart
-const quoteArr = [
-  {
-    text: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
-    author: 'Nelson Mandela'
-  },
-  {
-    text: "The way to get started is to quit talking and begin doing.",
-    author: 'Walt Disney'
-  },
-  {
-    text: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
-    author: 'Eleanor Roosevelt'
-  },
-  {
-    text: "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
-    author: 'Oprah Winfrey'
-  },
-  {
-    text: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
-    author: 'James Cameron'
-  }
-]
 
 class Quote extends React.Component {
   constructor(props) {
     super(props);
     this.newQuote = this.newQuote.bind(this);
     this.state = {
-      id: this.randIndex(),
+      id: 0,
+      quotes: {},
+      isLoaded: false
     };  
   }
   
-  randIndex() {
-    let max = quoteArr.length - 1;
+  // Finds the random index based off the number of quotes
+  randIndex = (max) => {
     return Math.floor(Math.random()* max);
   }
   
+  // Sets the state of the new index after clicking the new-quote link
   newQuote() {
     this.setState({
-      id: this.randIndex()
+      id: this.randIndex(this.state.quotes.length)
     })
   }
   
   
+  componentDidMount() {
+    // Fetching quote api data from:
+    // Free API - Inspirational quotes JSON with code examples
+    // https://forum.freecodecamp.org/t/free-api-inspirational-quotes-json-with-code-examples/311373
+    // by user: SergeyWebPro
+    fetch('https://type.fit/api/quotes')
+      .then(res => {
+        // Checking the response from api then converting to json when successful
+        if(res.ok){
+          return res.json();
+        } else {
+          console.log("Failed Response");
+        }
+      })
+      .then(data => {
+          // Find initial random index
+          let randInd = this.randIndex(data.length);
+          // Pass json data to the quotes state
+          this.setState({
+            id: randInd,
+            quotes: data,
+            isLoaded: true
+          })
+      });
+  }
   
   render() {
+    const {quotes, id, isLoaded} = this.state;
+    
+    // Waits till the api fetch is completed
+    if (isLoaded == false){
+      return <div>Loading..</div>;
+    } 
+    
+    let author = '';
+    let quote = quotes[id].text;
+    
+    // Assigns Unknown author if the author value is null
+    if (quotes[id].author == null){
+      author = 'Unknown';
+    } else {
+      author = quotes[id].author;
+    }
+    
+    // Returns after isLoaded is true
     return (
       <div id="quote-box">
-        <h1 id="text">"{quoteArr[this.state.id].text}"</h1>
-        <h2 id="author">- {quoteArr[this.state.id].author}</h2>
+        <h1 id="text">"{quote}"</h1>
+        <h2 id="author">- {author}</h2>
         <div class="btn-container">
           <a 
             id="tweet-quote" 
             target="_blank" 
-            href={'https://twitter.com/intent/tweet?text="' + quoteArr[this.state.id].text + '"' + '\n -' + quoteArr[this.state.id].author}>
+            href={'https://twitter.com/intent/tweet?text="' + quote + '"' + '\n -' + author}>
             Tweet
           </a>
           <a id="new-quote" href="#" onClick={this.newQuote}>New Quote</a>

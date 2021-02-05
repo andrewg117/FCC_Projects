@@ -6,26 +6,39 @@ $textColor: #fff;
 $mainBgColor: #AAB8C2;
 $boxBgColor: #14171A;
 
+//Set width of min screen size between desktop and mobile
+$widthChange: 900px;
+
+// Main font
+$mainFont: Arial, Helvetica, sans-serif;
+
 // Button template that takes in a color variable
 @mixin buttons ($butColor) {
     background-color: $butColor;
     color: $textColor;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1.2em;
     border: none;
     border-radius: 5px;
     width: auto;
     margin: auto;
     padding: .8em;
-    // Highlight buttons on mouse hover
+  
+    // Highlight buttons on mouse hover and click
     &:hover {
       background: white;
       color: black;
+    }
+    &:active {
+      background: black;
+      color: white;
     }
 }
 
 body {
   background-color: $mainBgColor;
+  font-family: $mainFont;
 }
 
 #quote-box {
@@ -35,9 +48,18 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  width: 60%;
   background-color: $boxBgColor;
   color: $textColor;
+  
+  // Change width of quotebox for varying screen sizes
+  @media (max-width: $widthChange) {
+    width: 80%;
+  }
+  @media (min-width: $widthChange) {
+    width: 60%;
+    font-size: 1.1em;
+  }
+  
   .btn-container{
     display: flex;
     margin: 1em;
