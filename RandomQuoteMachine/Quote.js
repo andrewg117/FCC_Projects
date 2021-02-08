@@ -76,7 +76,7 @@ class Quote extends React.Component {
           <a 
             id="tweet-quote" 
             target="_blank" 
-            href={'https://twitter.com/intent/tweet?text="' + quote + '"' + '\n -' + author}>
+            href={'https://twitter.com/intent/tweet?text="' + quote + '" - ' + author}>
             Tweet
           </a>
           <a id="new-quote" href="#" onClick={this.newQuote}>New Quote</a>
