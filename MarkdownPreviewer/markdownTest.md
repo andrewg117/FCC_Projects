@@ -4,13 +4,13 @@
 
 [This is a link](https://www.freecodecamp.org/)
 
-This is inline code \`let text = '';\`
+This is inline code `let text = '';`
 
 This is block code:
-\`\`\`javascript
+```javascript
 let text = '';
 text += 'hello';
-\`\`\`
+```
 
 1. First item
    - First item
