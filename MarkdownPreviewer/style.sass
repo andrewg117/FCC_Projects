@@ -1,0 +1,56 @@
+$previewBackColor: lightgray
+$mainBackColor: #1d1e22
+$widthChange: 900px
+
+body 
+  margin: 0
+  padding: 0
+  background-color: $mainBackColor
+  line-height: 1.5em
+
+
+#mark-container 
+  width: 95vw
+  height: 95vh
+  margin: 2em auto
+  display: grid
+  // Changes the grid direction when the window width reaches 900px  
+  @media (min-width: $widthChange) 
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 1.5em
+  
+  @media (max-width: $widthChange) 
+    grid-template-rows: 1fr 1fr
+    grid-row-gap: 1.5em
+  
+  #editor 
+    font-size: 1.5em
+    resize: none
+    padding: 1em
+  #preview 
+    padding: 1em
+    background-color: $previewBackColor
+    overflow: scroll
+    pre 
+      padding: 1em
+      background-color: $mainBackColor
+      border-radius: 5px
+    
+    code 
+      color: white
+      background-color: $mainBackColor
+      border-radius: 5px
+    
+    blockquote 
+      padding: 0 0 0 1em
+      border-left: 0.3em solid $mainBackColor
+    
+    img 
+      max-width: 50%
+      height: auto
+    
+    a 
+      text-decoration: none
+      color: blue
+    
+  
