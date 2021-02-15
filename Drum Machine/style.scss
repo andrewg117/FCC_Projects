@@ -1,5 +1,7 @@
-body{
-  background: #1d1e22;
+$mainColor: #1d1e22;
+
+body {
+  background: $mainColor;
 }
 
 #drum-container {
@@ -15,17 +17,24 @@ body{
     height: auto;
     display: grid;
     grid-template-columns: auto auto auto;
-    grid-gap: .5em;
-    padding: .8em;
+    grid-gap: 0.5em;
+    padding: 0.8em;
     background: gray;
 
     #pad-container {
       // border: 4px solid black;
-      
+
       .drum-pad {
         height: 100%;
         width: 100%;
         font-size: 1.5em;
+        border: none;
+        border-radius: 10px;
+        background: white;
+      }
+      .pressed {
+        background: $mainColor;
+        color: white;
       }
     }
   }
