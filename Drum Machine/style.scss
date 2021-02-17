@@ -1,40 +1,49 @@
-$mainColor: #1d1e22;
+$mainColor: #0a0a10;
+$drumMachColor: #3d3d5c;
+$textColor: white;
 
-body {
-  background: $mainColor;
+* {
+  font-family: Verdana, sans-serif;
+  body {
+    background: $mainColor;
+  }
 }
 
 #drum-container {
   margin: 3em auto;
-  width: 500px;
+  max-width: 500px;
   height: 500px;
   display: grid;
   grid-template-rows: 20% auto;
-  background: lightgray;
+  background: $drumMachColor;
+  color: $textColor;
   text-align: center;
+  h1 {
+    margin: auto;
+    font-weight: bold;
+  }
 
   #drum-machine {
     height: auto;
     display: grid;
     grid-template-columns: auto auto auto;
+    border-top: 4px solid $mainColor;
     grid-gap: 0.5em;
     padding: 0.8em;
-    background: gray;
+    background: $drumMachColor;
 
     #pad-container {
-      // border: 4px solid black;
-
       .drum-pad {
         height: 100%;
         width: 100%;
-        font-size: 1.5em;
         border: none;
-        border-radius: 10px;
-        background: white;
+        border-radius: 0.5em;
+        background: $textColor;
+        font-size: 1.5em;
       }
       .pressed {
         background: $mainColor;
-        color: white;
+        color: $textColor;
       }
     }
   }
