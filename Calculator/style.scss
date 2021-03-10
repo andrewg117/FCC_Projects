@@ -38,11 +38,11 @@ $textColor: white;
     grid-template-rows: auto;
     grid-gap: .5em;
     grid-template-areas: 
-    "c c d m"
-    "se ei n s"
-    "fo fi si a"
-    "o tw th e"
-    "z z de e";
+    "clear clear divide multiply"
+    "seven eight nine subtract"
+    "four five six add"
+    "one two three equals"
+    "zero zero decimal equals";
     button{
       background: $inputColor;
       height: 100%;
@@ -54,58 +54,6 @@ $textColor: white;
         background: $mainColor;
         color: $textColor;
       }
-    }
-    
-    #clear {
-      grid-area: c;
-    }
-    #divide {
-      grid-area: d;
-    }
-    #multiply {
-      grid-area: m;
-    }
-    #subtract {
-      grid-area: s;
-    }
-    #add {
-      grid-area: a;
-    }
-    #equals {
-      grid-area: e;
-    }
-    #nine {
-      grid-area: n;
-    }
-    #eight {
-      grid-area: ei;
-    }
-    #seven {
-      grid-area: se;
-    }
-    #six {
-      grid-area: si;
-    }
-    #five {
-      grid-area: fi;
-    }
-    #four {
-      grid-area: fo;
-    }
-    #three {
-      grid-area: th;
-    }
-    #two {
-      grid-area: tw;
-    }
-    #one {
-      grid-area: o;
-    }
-    #decimal {
-      grid-area: de;
-    }
-    #zero {
-      grid-area: z;
     }
   }
 }
