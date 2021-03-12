@@ -75,8 +75,11 @@ class Calculator extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.clearDisplay = this.clearDisplay.bind(this);
     this.equalFunc = this.equalFunc.bind(this);
+    this.getOp = this.getOp.bind(this);
     this.state = {
       displayText: '0',
+      resultVal: '',
+      lastOp: '',
       inputGroup: []
     }
   }
@@ -117,21 +120,30 @@ class Calculator extends React.Component {
   
   equalFunc() {
     this.setState({
-      displayText: this.equateInput(this.state.displayText)
+      displayText: this.equateInput(this.state.displayText),
+      result: this.equateInput(this.state.displayText)
+    });
+  }
+  
+  getOp(Op) {
+    this.setState({
+      lastOp: Op
     });
   }
   
   componentDidMount() {
     this.setState({
-      // Creates each Pad component and sets them to the padGroup state
       inputGroup: inputs.map((input, index) => (
         <CalcInput
           key={index}
           handleClick={this.handleClick}
           clearDisplay={this.clearDisplay}
           equalFunc={this.equalFunc}
+          getOp={this.getOp}
           inputID={input.id}
           value={input.value}
+          resultVal={input.resultVal}
+          lastOp={input.lastOp}
         />
       ))
     });
@@ -163,6 +175,10 @@ class CalcInput extends React.Component {
       case 'clear':
         this.props.clearDisplay();
         break;
+      case 'divide':
+        this.props.getOp(this.props.value);
+        this.props.handleClick(this.props.value);
+        break;
       case 'equals':
         this.props.equalFunc();
         break;
@@ -175,8 +191,8 @@ class CalcInput extends React.Component {
   render(){ 
     const { inputID, value } = this.props;
     return(
-        <div id={inputID} style={{'grid-area': inputID}}>
-          <button onClick={this.handleClick}>{value}</button>
+        <div style={{'grid-area': inputID}}>
+          <button  id={inputID} onClick={this.handleClick}>{value}</button>
         </div>
       );
   }
