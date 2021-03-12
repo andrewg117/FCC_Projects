@@ -20,11 +20,11 @@ COMPLETE: User Story #9: In any order, I should be able to add, subtract, multip
 
 COMPLETE: User Story #10: When inputting numbers, my calculator should not allow a number to begin with multiple zeros.
 
-TODO: User Story #11: When the decimal element is clicked, a . should append to the currently displayed value; two . in one number should not be accepted.
+COMPLETE: User Story #11: When the decimal element is clicked, a . should append to the currently displayed value; two . in one number should not be accepted.
 
 COMPLETE: User Story #12: I should be able to perform any operation (+, -, *, /) on numbers containing decimal points.
 
-TODO: User Story #13: If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign). For example, if 5 + * 7 = is entered, the result should be 35 (i.e. 5 * 7); if 5 * - 5 = is entered, the result should be -25 (i.e. 5 * (-5)).
+COMPLETE: User Story #13: If 2 or more operators are entered consecutively, the operation performed should be the last operator entered (excluding the negative (-) sign). For example, if 5 + * 7 = is entered, the result should be 35 (i.e. 5 * 7); if 5 * - 5 = is entered, the result should be -25 (i.e. 5 * (-5)).
 
 COMPLETE: User Story #14: Pressing an operator immediately following = should start a new calculation that operates on the result of the previous evaluation.
 

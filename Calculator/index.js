@@ -76,10 +76,12 @@ class Calculator extends React.Component {
     this.clearDisplay = this.clearDisplay.bind(this);
     this.equalFunc = this.equalFunc.bind(this);
     this.getOp = this.getOp.bind(this);
+    this.getDecimal = this.getDecimal.bind(this);
     this.state = {
       displayText: '0',
-      resultVal: '',
+      // resultEntered: false, // replace = result with new input
       lastOp: '',
+      decIsUsed: false,
       inputGroup: []
     }
   }
@@ -92,13 +94,16 @@ class Calculator extends React.Component {
       val = this.state.displayText.concat(value);
     }
     this.setState({
-      displayText: val
+      displayText: val,
+      lastOp: ''
     });
   }
   
   clearDisplay() {
     this.setState({
-      displayText: '0'
+      displayText: '0',
+      lastOp: '',
+      decIsUsed: false
     });
   }
   
@@ -119,16 +124,49 @@ class Calculator extends React.Component {
   }
   
   equalFunc() {
+    if(this.state.lastOp == ''){
     this.setState({
       displayText: this.equateInput(this.state.displayText),
       result: this.equateInput(this.state.displayText)
     });
+    }
   }
   
   getOp(Op) {
+    // console.log(this.state.lastOp);
+    let newText = '';
+    
+     if(this.state.lastOp == ''){
+      newText = this.state.displayText.concat(Op);
+    } else if (this.state.lastOp != '' && Op == '-' && this.state.lastOp != '-') {
+      newText = this.state.displayText.concat(Op);
+    } else if(this.state.lastOp != '-') {
+      newText = this.state.displayText.replace(/.$/,Op);
+    } else {
+      newText = this.state.displayText.replace(/[^\d].$/g,Op);
+    }
     this.setState({
-      lastOp: Op
+      lastOp: Op,
+      displayText: newText,
+      decIsUsed: false
     });
+  }
+  
+  getDecimal(dec) {
+    // console.log(dec);
+    let newText = this.state.displayText;
+    if(!this.state.decIsUsed){
+      newText = this.state.displayText.concat(dec);
+    }
+    //  if(this.state.lastOp == ''){
+    //   newText = this.state.displayText.concat(dec);
+    // }
+    this.setState({
+      displayText: newText,
+      decIsUsed: true
+    });
+    
+    
   }
   
   componentDidMount() {
@@ -140,6 +178,7 @@ class Calculator extends React.Component {
           clearDisplay={this.clearDisplay}
           equalFunc={this.equalFunc}
           getOp={this.getOp}
+          getDecimal={this.getDecimal}
           inputID={input.id}
           value={input.value}
           resultVal={input.resultVal}
@@ -171,13 +210,20 @@ class CalcInput extends React.Component {
   }
   
   handleClick = (e) => {
+    let oper = '';
+    if (/[^\d.=]/.test(this.props.value)){
+      oper = this.props.inputID;
+    }
+    
     switch(this.props.inputID) {
       case 'clear':
         this.props.clearDisplay();
         break;
-      case 'divide':
+      case oper:
         this.props.getOp(this.props.value);
-        this.props.handleClick(this.props.value);
+        break;
+      case 'decimal':
+        this.props.getDecimal(this.props.value);
         break;
       case 'equals':
         this.props.equalFunc();
