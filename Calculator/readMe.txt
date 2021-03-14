@@ -1,4 +1,5 @@
 REF: https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-javascript-calculator
+     Codepen: https://codepen.io/andrewj117/pen/wvoYmEK
 
 COMPLETE: User Story #1: My calculator should contain a clickable element containing an = (equal sign) with a corresponding id="equals".
 
