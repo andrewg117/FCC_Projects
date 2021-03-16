@@ -7,7 +7,8 @@ class Clock extends React.Component {
     this.resetClock = this.resetClock.bind(this);
     this.incTime = this.incTime.bind(this);
     this.state = {
-      timeLeft: 25,
+      sesTimeLeft: 1500,
+      brTimeLeft: 300,
       breakLength: 5,
       sessionLength: 25,
       isStart: false
@@ -15,7 +16,7 @@ class Clock extends React.Component {
   }
 
   convertTime(time) {
-    let length = time * 60;
+    let length = time;
     let sec = length % 60;
     let min = Math.floor(length / 60);
 
@@ -25,14 +26,26 @@ class Clock extends React.Component {
   }
 
   startClock() {
+     let timer = setInterval(() => {
+      if(this.state.isStart && this.state.sesTimeLeft > 0){
+        this.setState({
+          sesTimeLeft: this.state.sesTimeLeft - 1
+        });
+      } else {
+        clearInterval(timer);
+        // console.log(timer);
+      }
+    }, 1000);
+    
     this.setState({
-      isStart: !this.state.isStart
+      isStart: !this.state.isStart,
     });
   }
 
   resetClock() {
+    clearInterval(this.state.timer);
     this.setState({
-      timeLeft: 25,
+      sesTimeLeft: 1500,
       breakLength: 5,
       sessionLength: 25,
       isStart: false
@@ -43,7 +56,7 @@ class Clock extends React.Component {
     if (e.target.id == "session-increment" && this.state.sessionLength < 60) {
       this.setState({
         sessionLength: this.state.sessionLength + 1,
-        timeLeft: this.state.sessionLength + 1
+        sesTimeLeft: (this.state.sessionLength + 1) * 60
       });
     } else if (
       e.target.id == "session-decrement" &&
@@ -51,7 +64,7 @@ class Clock extends React.Component {
     ) {
       this.setState({
         sessionLength: this.state.sessionLength - 1,
-        timeLeft: this.state.sessionLength - 1
+        sesTimeLeft: (this.state.sessionLength - 1) * 60
       });
     } else if (
       e.target.id == "break-increment" &&
@@ -66,12 +79,14 @@ class Clock extends React.Component {
       });
     }
   }
-
-  componentDidMount() {}
+  
+  
+  componentDidMount() {
+  }
 
   render() {
     const {
-      timeLeft,
+      sesTimeLeft,
       breakLength,
       sessionLength,
       isStart,
@@ -82,7 +97,7 @@ class Clock extends React.Component {
       <div id="clockFrame">
         <section style={{ "grid-area": "session" }}>
           <h2 id="timer-label">Session</h2>
-          <h3 id="timer-left">{this.convertTime(timeLeft)}</h3>
+          <h3 id="time-left">{this.convertTime(sesTimeLeft)}</h3>
         </section>
         <section style={{ "grid-area": "brLen" }}>
           <label id="break-label">Break Length</label>
