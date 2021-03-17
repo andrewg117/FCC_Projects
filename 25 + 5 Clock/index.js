@@ -1,4 +1,3 @@
-const timeType = ["session", "break"];
 
 class Clock extends React.Component {
   constructor(props) {
@@ -7,11 +6,11 @@ class Clock extends React.Component {
     this.resetClock = this.resetClock.bind(this);
     this.incTime = this.incTime.bind(this);
     this.state = {
-      sesTimeLeft: 1500,
-      brTimeLeft: 300,
+      timeLeft: 1500,
       breakLength: 5,
       sessionLength: 25,
-      isStart: false
+      isStart: false,
+      onBreak: false
     };
   }
 
@@ -24,12 +23,27 @@ class Clock extends React.Component {
       min.toString().padStart(2, "0") + ":" + sec.toString().padStart(2, "0")
     );
   }
+  
+  changeSession() {
+    if(!this.state.onBreak && this.state.timeLeft == 0){
+      this.setState({
+        onBreak: true,
+        timeLeft: (this.state.breakLength + 1) * 60
+      });
+    } else if(this.state.onBreak && this.state.timeLeft == 0){
+      this.setState({
+        onBreak: false,
+        timeLeft: (this.state.sessionLength + 1) * 60
+      });
+    } 
+  }
 
   startClock() {
      let timer = setInterval(() => {
-      if(this.state.isStart && this.state.sesTimeLeft > 0){
+      this.changeSession();
+      if(this.state.isStart && this.state.timeLeft > 0){
         this.setState({
-          sesTimeLeft: this.state.sesTimeLeft - 1
+          timeLeft: this.state.timeLeft - 1
         });
       } else {
         clearInterval(timer);
@@ -45,37 +59,42 @@ class Clock extends React.Component {
   resetClock() {
     clearInterval(this.state.timer);
     this.setState({
-      sesTimeLeft: 1500,
+      timeLeft: 1500,
       breakLength: 5,
       sessionLength: 25,
-      isStart: false
+      isStart: false,
+      onBreak: false
     });
   }
-
+  
   incTime(e) {
-    if (e.target.id == "session-increment" && this.state.sessionLength < 60) {
+    const { sessionLength, breakLength, onBreak, timeLeft } = this.state;
+    
+    if (e.target.id == "session-increment" && sessionLength < 60) {
       this.setState({
-        sessionLength: this.state.sessionLength + 1,
-        sesTimeLeft: (this.state.sessionLength + 1) * 60
+        sessionLength: sessionLength + 1,
+        timeLeft: !onBreak ? (sessionLength + 1) * 60: timeLeft
       });
     } else if (
       e.target.id == "session-decrement" &&
-      this.state.sessionLength > 1
+      sessionLength > 1
     ) {
       this.setState({
-        sessionLength: this.state.sessionLength - 1,
-        sesTimeLeft: (this.state.sessionLength - 1) * 60
+        sessionLength: sessionLength - 1,
+        timeLeft: !onBreak ? (sessionLength - 1) * 60: timeLeft
       });
     } else if (
       e.target.id == "break-increment" &&
-      this.state.breakLength < 60
+      breakLength < 60 
     ) {
       this.setState({
-        breakLength: this.state.breakLength + 1
+        breakLength: breakLength + 1,
+        timeLeft: onBreak ? (breakLength + 1) * 60 : timeLeft
       });
-    } else if (e.target.id == "break-decrement" && this.state.breakLength > 1) {
+    } else if (e.target.id == "break-decrement" && breakLength > 1) {
       this.setState({
-        breakLength: this.state.breakLength - 1
+        breakLength: breakLength - 1,
+        timeLeft: onBreak ? (breakLength - 1) * 60 : timeLeft
       });
     }
   }
@@ -86,36 +105,37 @@ class Clock extends React.Component {
 
   render() {
     const {
-      sesTimeLeft,
+      timeLeft,
       breakLength,
       sessionLength,
       isStart,
-      resetClock
+      resetClock,
+      onBreak
     } = this.state;
 
     return (
       <div id="clockFrame">
         <section style={{ "grid-area": "session" }}>
-          <h2 id="timer-label">Session</h2>
-          <h3 id="time-left">{this.convertTime(sesTimeLeft)}</h3>
+          <h2 id="timer-label">{onBreak ? 'Break' : 'Session'}</h2>
+          <h3 id="time-left">{this.convertTime(timeLeft)}</h3>
         </section>
         <section style={{ "grid-area": "brLen" }}>
           <label id="break-label">Break Length</label>
           <p id="break-length">{breakLength}</p>
-          <button id="break-increment" onClick={this.incTime}>
+          <button id="break-increment" onClick={!isStart? this.incTime: null}>
             Inc
           </button>
-          <button id="break-decrement" onClick={this.incTime}>
+          <button id="break-decrement" onClick={!isStart? this.incTime: null}>
             Dec
           </button>
         </section>
         <section style={{ "grid-area": "sessLen" }}>
           <label id="session-label">Session Length</label>
           <p id="session-length">{sessionLength}</p>
-          <button id="session-increment" onClick={this.incTime}>
+          <button id="session-increment" onClick={!isStart? this.incTime: null}>
             Inc
           </button>
-          <button id="session-decrement" onClick={this.incTime}>
+          <button id="session-decrement" onClick={!isStart? this.incTime: null}>
             Dec
           </button>
         </section>
