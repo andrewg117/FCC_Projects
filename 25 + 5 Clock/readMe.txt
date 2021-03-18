@@ -51,8 +51,8 @@ COMPLETE: User Story #24: When a break countdown reaches zero (NOTE: timer MUST 
 
 COMPLETE: User Story #25: When a break countdown reaches zero (NOTE: timer MUST reach 00:00), a new session countdown should begin, counting down from the value currently displayed in the id="session-length" element.
 
-TODO: User Story #26: When a countdown reaches zero (NOTE: timer MUST reach 00:00), a sound indicating that time is up should play. This should utilize an HTML5 audio tag and have a corresponding id="beep".
+COMPLETE: User Story #26: When a countdown reaches zero (NOTE: timer MUST reach 00:00), a sound indicating that time is up should play. This should utilize an HTML5 audio tag and have a corresponding id="beep".
 
-TODO: User Story #27: The audio element with id="beep" must be 1 second or longer.
+COMPLETE: User Story #27: The audio element with id="beep" must be 1 second or longer.
 
-TODO: User Story #28: The audio element with id of beep must stop playing and be rewound to the beginning when the element with the id of reset is clicked.
+COMPLETE: User Story #28: The audio element with id of beep must stop playing and be rewound to the beginning when the element with the id of reset is clicked.
